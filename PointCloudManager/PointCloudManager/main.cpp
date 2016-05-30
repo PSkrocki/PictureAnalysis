@@ -1,6 +1,9 @@
 #include <iostream>
-#include <event2/event.h>
-#include <event2/buffer.h>
+#include <event2\event.h>
+#include <event2\buffer.h>
+
+#include <event2\buffer.h>
+
 #include <event2/http.h>
 #include <Winsock2.h>
 #include <stdlib.h>
@@ -27,8 +30,10 @@ void generic_handler(struct evhttp_request *req, void *arg){
 	evbuffer_free(buf);
 }
 
-int main(){
+int main()
+{
 	cout << "PointCloudManager" << endl;
+
 #ifdef WIN32
 	init_win_socket();
 #endif
@@ -38,7 +43,8 @@ int main(){
 
 	struct event_base * base = event_base_new();
 	struct evhttp * http_server = evhttp_new(base);
-	if (!http_server){
+	if (!http_server)
+	{
 		return -1;
 	}
 	int ret = evhttp_bind_socket(http_server, http_addr, http_port);

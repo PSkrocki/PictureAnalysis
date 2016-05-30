@@ -1,18 +1,16 @@
-﻿Build started 2016-05-10 01:32:18.
-     1>Project "C:\Users\AleksM\Desktop\HexagonProject\PointCloudManager\PointCloudManager\PointCloudManager.vcxproj" on node 2 (Build target(s)).
-     1>ClCompile:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /I"C:\Users\AleksM\Desktop\HexagonProject\PointCloudManager\packages\cpprestsdk.v120.windesktop.msvcstl.dyn.rt-dyn.2.8.0\build\native\include" /IC:\Users\AleksM\Desktop\HexagonProject\PointCloudManager\packages\libevent_vc120.2.1.4.0\build\native\include\ /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _CONSOLE /D _LIB /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt main.cpp
-         main.cpp
-       Link:
-         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\AleksM\Desktop\HexagonProject\PointCloudManager\Debug\PointCloudManager.exe" /INCREMENTAL /NOLOGO /LIBPATH:C:\Users\AleksM\Desktop\HexagonProject\PointCloudManager\packages\libevent_vc120.2.1.4.0\build\native\bin\ "C:\Users\AleksM\Desktop\HexagonProject\PointCloudManager\packages\cpprestsdk.v120.windesktop.msvcstl.dyn.rt-dyn.2.8.0\build\native\..\..\lib\native\v120\windesktop\msvcstl\dyn\rt-dyn\x86\Debug\cpprest120d_2_8.lib" "libevent-x86-v120-mt-sgd-2_1_4_0.lib" ws2_32.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\AleksM\Desktop\HexagonProject\PointCloudManager\Debug\PointCloudManager.pdb" /SUBSYSTEM:CONSOLE /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\AleksM\Desktop\HexagonProject\PointCloudManager\Debug\PointCloudManager.lib" /MACHINE:X86 Debug\LocalisationDataConverter.obj
-         Debug\main.obj
-         Debug\PlyFilesManager.obj
-         Debug\Point.obj
-         Debug\RestManager.obj
-         Debug\VolumeCounter.obj
-         PointCloudManager.vcxproj -> C:\Users\AleksM\Desktop\HexagonProject\PointCloudManager\Debug\PointCloudManager.exe
-     1>Done Building Project "C:\Users\AleksM\Desktop\HexagonProject\PointCloudManager\PointCloudManager\PointCloudManager.vcxproj" (Build target(s)).
-
-Build succeeded.
-
-Time Elapsed 00:00:01.39
+﻿  LocalisationDataConverter.cpp
+LocalisationDataConverter.obj : error LNK2019: unresolved external symbol "public: static class std::vector<class std::vector<double,class std::allocator<double> >,class std::allocator<class std::vector<double,class std::allocator<double> > > > __cdecl UtmCalculations::Convert(class std::vector<class std::vector<double,class std::allocator<double> >,class std::allocator<class std::vector<double,class std::allocator<double> > > >)" (?Convert@UtmCalculations@@SA?AV?$vector@V?$vector@NV?$allocator@N@std@@@std@@V?$allocator@V?$vector@NV?$allocator@N@std@@@std@@@2@@std@@V23@@Z) referenced in function "public: class std::vector<class Point *,class std::allocator<class Point *> > __thiscall LocalisationDataConverter::getPointsInUTM(class std::vector<class Point *,class std::allocator<class Point *> >)" (?getPointsInUTM@LocalisationDataConverter@@QAE?AV?$vector@PAVPoint@@V?$allocator@PAVPoint@@@std@@@std@@V23@@Z)
+LocalisationDataConverter.obj : error LNK2019: unresolved external symbol "public: __thiscall OriginalSelection::OriginalSelection(void)" (??0OriginalSelection@@QAE@XZ) referenced in function "public: class std::vector<class Point *,class std::allocator<class Point *> > __thiscall LocalisationDataConverter::getOriginalSelection(char *,class std::vector<unsigned int,class std::allocator<unsigned int> >)" (?getOriginalSelection@LocalisationDataConverter@@QAE?AV?$vector@PAVPoint@@V?$allocator@PAVPoint@@@std@@@std@@PADV?$vector@IV?$allocator@I@std@@@3@@Z)
+LocalisationDataConverter.obj : error LNK2019: unresolved external symbol "public: int __thiscall OriginalSelection::readPlyFile(char *,class std::vector<unsigned int,class std::allocator<unsigned int> >,class std::vector<class std::vector<double,class std::allocator<double> >,class std::allocator<class std::vector<double,class std::allocator<double> > > > &)" (?readPlyFile@OriginalSelection@@QAEHPADV?$vector@IV?$allocator@I@std@@@std@@AAV?$vector@V?$vector@NV?$allocator@N@std@@@std@@V?$allocator@V?$vector@NV?$allocator@N@std@@@std@@@2@@3@@Z) referenced in function "public: class std::vector<class Point *,class std::allocator<class Point *> > __thiscall LocalisationDataConverter::getOriginalSelection(char *,class std::vector<unsigned int,class std::allocator<unsigned int> >)" (?getOriginalSelection@LocalisationDataConverter@@QAE?AV?$vector@PAVPoint@@V?$allocator@PAVPoint@@@std@@@std@@PADV?$vector@IV?$allocator@I@std@@@3@@Z)
+main.obj : error LNK2019: unresolved external symbol _event_base_new referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _event_base_dispatch referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _evbuffer_new referenced in function "void __cdecl generic_handler(struct evhttp_request *,void *)" (?generic_handler@@YAXPAUevhttp_request@@PAX@Z)
+main.obj : error LNK2019: unresolved external symbol _evbuffer_free referenced in function "void __cdecl generic_handler(struct evhttp_request *,void *)" (?generic_handler@@YAXPAUevhttp_request@@PAX@Z)
+main.obj : error LNK2019: unresolved external symbol _evbuffer_add_printf referenced in function "void __cdecl generic_handler(struct evhttp_request *,void *)" (?generic_handler@@YAXPAUevhttp_request@@PAX@Z)
+main.obj : error LNK2019: unresolved external symbol _evhttp_new referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _evhttp_bind_socket referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _evhttp_free referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _evhttp_set_gencb referenced in function _main
+main.obj : error LNK2019: unresolved external symbol _evhttp_send_reply referenced in function "void __cdecl generic_handler(struct evhttp_request *,void *)" (?generic_handler@@YAXPAUevhttp_request@@PAX@Z)
+main.obj : error LNK2019: unresolved external symbol _evhttp_request_get_uri referenced in function "void __cdecl generic_handler(struct evhttp_request *,void *)" (?generic_handler@@YAXPAUevhttp_request@@PAX@Z)
+I:\Code\QtProjects\Implementacja\Repo\PictureAnalysis\PointCloudManager\Debug\PointCloudManager.exe : fatal error LNK1120: 14 unresolved externals

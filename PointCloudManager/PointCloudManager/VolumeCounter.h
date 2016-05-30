@@ -1,4 +1,6 @@
 #pragma once
+
+
 /*
 	Gets: List of points.
 		  Those points are in UTM system
