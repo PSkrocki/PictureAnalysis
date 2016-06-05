@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include <process.h>
 #include <time.h>
 #include <stdlib.h>
@@ -9,9 +10,13 @@ using namespace std;
 
 RestManager* restManager;
 
-int main(){
+int main()
+{
 	cout << "Point Cloud Manager" << endl;
 	restManager = new RestManager();
 	init(restManager);
 	getchar();
+
+
+
 }
