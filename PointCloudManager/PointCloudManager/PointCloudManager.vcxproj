@@ -84,6 +84,7 @@
     <ClCompile Include="PlyFilesManager.cpp" />
     <ClCompile Include="Point.cpp" />
     <ClCompile Include="RestManager.cpp" />
+    <ClCompile Include="ServerSetup.cpp" />
     <ClCompile Include="VolumeCounter.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +92,7 @@
     <ClInclude Include="PlyFilesManager.h" />
     <ClInclude Include="Point.h" />
     <ClInclude Include="RestManager.h" />
+    <ClInclude Include="ServerSetup.h" />
     <ClInclude Include="VolumeCounter.h" />
   </ItemGroup>
   <ItemGroup>
