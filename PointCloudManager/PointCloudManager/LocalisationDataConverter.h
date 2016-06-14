@@ -1,4 +1,4 @@
-#pragma once
+//#pragma once
 /*
 	Gets: List of points.
 		  Those points are bare from GPS system
@@ -16,10 +16,13 @@ class LocalisationDataConverter
 
 private:
 	vector<Point*> pointsInUTM;
+	
 
 public:
+
 	LocalisationDataConverter();
 	~LocalisationDataConverter();
-	vector<Point*> getPointsInUTM();
+	vector<Point*> getPointsInUTM(vector <Point*> llPoints);
+	vector<Point*> getOriginalSelection(char *pathToPlyFile, vector<size_t> selectedPoints);
 };
 
