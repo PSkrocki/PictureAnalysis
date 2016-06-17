@@ -18,8 +18,13 @@ OriginalSelection::OriginalSelection()
 
 vector<Point> OriginalSelection::GetOriginalSelection(char * pathToFile, vector<size_t> selectedIndexes)
 {
-	readPlyFile(pathToFile);
-	return checkPoints(selectedIndexes);
+	int x = readPlyFile(pathToFile);
+	vector<Point> w;
+	for (int i = 0; i < points.size(); i++)
+		w.push_back(Point(points[i][0], points[i][1],points[i][2], 0));
+
+	return w;
+	//return checkPoints(selectedIndexes);
 }
 
 
@@ -33,26 +38,44 @@ int OriginalSelection::GetVertex(p_ply_argument argument) {
 	if (eol)
 	{
 		currentIndex++;
+		vector<double> a;
+		points.push_back(a);
 	}
 
 	return 1;
 }
 
 
-void OriginalSelection::readPlyFile(char *path)
+int OriginalSelection::readPlyFile(char *path)
 {
 	size_t nvertices;
 
 	currentIndex = 0;
 	
 	p_ply ply = ply_open(path, NULL, 0, NULL);
+
+	if (!ply) return 1;
+	if (!ply_read_header(ply)) 1;
 		
-	nvertices = ply_set_read_cb(ply, "vertex", "x", reinterpret_cast<p_ply_read_cb>(&GetVertex), NULL, 0);
-	ply_set_read_cb(ply, "vertex", "y", reinterpret_cast<p_ply_read_cb>(&GetVertex), NULL, 0);
-	ply_set_read_cb(ply, "vertex", "z", reinterpret_cast<p_ply_read_cb>(&GetVertex), NULL, 1);
+	nvertices = ply_set_read_cb(ply, "vertex", "x", reinterpret_cast<p_ply_read_cb>(&GetVertex), NULL, 0);	
+				ply_set_read_cb(ply, "vertex", "y", reinterpret_cast<p_ply_read_cb>(&GetVertex), NULL, 0);
+				ply_set_read_cb(ply, "vertex", "z", reinterpret_cast<p_ply_read_cb>(&GetVertex), NULL, 1);
 
 	points.reserve(nvertices);
-	ply_close(ply);	
+
+	vector<double> a;
+	points.push_back(a);
+	
+	cout << "size" << points.size() << endl;
+ 
+	if (!ply_read(ply)) return 1;
+	OriginalSelection::points.pop_back();
+	cout << "data size:" << points.size() << endl;
+	
+
+	ply_close(ply);
+
+	return 0;
 }
 
 vector<Point> OriginalSelection::checkPoints(vector<size_t> index)

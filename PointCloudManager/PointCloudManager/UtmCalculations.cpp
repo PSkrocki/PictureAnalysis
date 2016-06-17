@@ -61,30 +61,27 @@ void UtmCalculations::offset(vector<Point> &utmPoints, UTMPoint leftPoint, UTMPo
 }
 
 
-UTMPoint UtmCalculations::LLtoUTM(double Lat, double Long)
+UTMPoint UtmCalculations::LLtoUTM(double Lat, double Long, double& Northing, double& Easting, int& Zone)
 {
-	
-	double Easting, Northing;
-	int Zone;
+	long double a = 6378137;
 
-	double a = 6378137;
-	double ee = 298.257223563;
-	Long -= int((Long + 180) / 360) * 360;	
+	double fr = 298.257223563;
+
+	long double ee = 2 / fr - 1 / (fr*fr);
+	Long -= int((Long + 180) / 360) * 360;			//ensure longitude within -180.00..179.9
 	double N, T, C, A, M;
 	double LatRad = Lat*deg2rad;
 	double LongRad = Long*deg2rad;
 
 	Zone = int((Long + 186) / 6);
 	if (Lat >= 56.0 && Lat < 64.0 && Long >= 3.0 && Long < 12.0)  Zone = 32;
-
-	if (Lat >= 72.0 && Lat < 84.0)
-	{		
+	if (Lat >= 72.0 && Lat < 84.0) {			//Special zones for Svalbard
 		if (Long >= 0.0  && Long <  9.0)  Zone = 31;
 		else if (Long >= 9.0  && Long < 21.0)  Zone = 33;
 		else if (Long >= 21.0 && Long < 33.0)  Zone = 35;
 		else if (Long >= 33.0 && Long < 42.0)  Zone = 37;
 	}
-	double LongOrigin = Zone * 6 - 183;		
+	double LongOrigin = Zone * 6 - 183;			//origin in middle of zone
 	double LongOriginRad = LongOrigin * deg2rad;
 
 	double EE = ee / (1 - ee);
@@ -116,17 +113,21 @@ UTMPoint UtmCalculations::LLtoUTM(double Lat, double Long)
 
 vector<Point> UtmCalculations::Convert(vector<Point> LLPoints)
 {
+	double x, y;
+	int z;
 
-
-	UTMPoint LeftmostUtmPoint = LLtoUTM(LLPoints[0].y, LLPoints[0].x);
+	UTMPoint LeftmostUtmPoint = LLtoUTM(LLPoints[0].y, LLPoints[0].x,x,y,z);
 	UTMPoint LowermostUtmPoint = LeftmostUtmPoint;
 
 	vector <Point> result;
 	
+	cout << "UTM\n";
+
 	for (int i = 0; i<LLPoints.size(); i++)
 	{
-		UTMPoint temp = LLtoUTM(LLPoints[i].y, LLPoints[i].x);
+		
 
+		UTMPoint temp = LLtoUTM(LLPoints[i].y, LLPoints[i].x,x,y,z);		
 		result.push_back(Point(temp.Easting, temp.Northing, LLPoints[i].z, 0));
 		
 		if (UtmCalculations::downCompare(temp, LowermostUtmPoint))
@@ -140,7 +141,7 @@ vector<Point> UtmCalculations::Convert(vector<Point> LLPoints)
 		}
 	}
 
-	offset(result, LeftmostUtmPoint, LowermostUtmPoint);
+	//offset(result, LeftmostUtmPoint, LowermostUtmPoint);
 
 	return result;
 }

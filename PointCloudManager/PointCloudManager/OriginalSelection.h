@@ -14,14 +14,16 @@ public:
 
 
 	vector<Point> GetOriginalSelection(char *pathToFile, vector<size_t> selectedIndexes);
+	int readPlyFile(char *path);
+	static vector<vector<double> > points;
 
 private:
 
 	vector<Point> checkPoints(vector<size_t> index);
 	static int IsInPolygin(int nvert, vector<double> vertx, vector<double> verty, double testx, double testy);
-	void readPlyFile(char *path);
+	
 
-	static vector<vector<double> > points;	
+	
 	static int GetVertex(p_ply_argument argument);
 	static int currentIndex;
 	static int count;

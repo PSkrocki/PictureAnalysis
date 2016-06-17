@@ -22,7 +22,7 @@ private:
 	bool leftCompare(UTMPoint point1, UTMPoint point2);
 	void offset(vector<Point> &utmPoints, UTMPoint leftPoint, UTMPoint downPoint);
 
-	UTMPoint LLtoUTM(double Lat, double Long);
+	UTMPoint LLtoUTM(double Lat, double Long, double& Northing, double& Easting, int& Zone);
 
 	double PI = 3.14159265;
 	double deg2rad = PI / 180;
