@@ -226,11 +226,11 @@ double  VolumeCounter::run_test(vector<Point> pointsVector)
 
 
 	for (int i = 0; i < pointsVector.size(); i++) {
-		if (i % 100 == 0) {
+		if (i % 1000 == 0) {
 			Point point(pointsVector[i].x, pointsVector[i].y, minHeight, 0);
 			pointsVector.push_back(point);
 		}
-		if (i % 200 == 0) {
+		if (i % 2000 == 0) {
 			Point point(pointsVector[i].x, pointsVector[i].y, (pointsVector[i].z + minHeight) / 2, 0);
 			pointsVector.push_back(point);
 		}
@@ -291,7 +291,7 @@ double  VolumeCounter::run_test(vector<Point> pointsVector)
 		volume += calculateVolume(determinant(tetrahedronsArrayVector.at(i), 5));
 	}
 	
-
+	/*
 	vector<Point> pointsArray;
 	for (int n = 0; n < out.numberofpoints; n++) {
 		REAL *u = &out.pointlist[3 * n];
@@ -311,6 +311,7 @@ double  VolumeCounter::run_test(vector<Point> pointsVector)
 	}
 
 	saveToFile("test.ply", pointsArray, pointsArray.size(), out.numberofpoints, out.numberofedges);
+	*/
 	cout << "Volume of surface = " << volume << endl;
 
 	return volume;
